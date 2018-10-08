@@ -114,16 +114,8 @@ Invoke the **SetupDemo** transaction to prefill the blockchain
   - within Angular App, "admin" id is assumed, so participant designated Access Control Rules are not applicable
   - if using Composer Playground, *Administrator* can only update, delete *ProtectedAssets* that he owns
   - When creating a *ProtectedAsset*, use the *CreateAsset* Transaction
-  - Valid URL must be entered for the *CreateAsset** and *UpdateAsset* transactions
+  - Valid URL must be entered for the *CreateAsset* and *UpdateAsset* transactions
   - if using the Angular App, text must be entered for both description (blank is accepted) and URL for *UpdateAsset* transaction
-  
-## Future support
-
-When an asset is deleted, it needs to be removed from any *ORN*s that it is associated with.
-
-*UpdateORN*, *UpdateJob* need to be further defined.  Currently, only *description* data field can be modified after asset creation.
-
-Algorithms, datasets, and developers need to be validated as created assets before adding into *ORN*s.
 
 ## Known bugs
 Unable to create separate identities for Administrator and Developer on Composer v0.20.0 (HLF 1.2). https://github.com/hyperledger/composer/issues/4398
