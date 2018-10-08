@@ -84,7 +84,7 @@ Reference links: https://hyperledger.github.io/composer/latest/integrating/enabl
  
 ### Import cards
 
- - execute POST/wallet/import using card (`admin@<network name> or Developer@<network name>`) provided. Make sure this card has System Admin privileges.
+ - execute POST/wallet/import using card (`admin@<network name>`) provided. Make sure this card has System Admin privileges.
  - execute POST/wallet/{name}/setDefault to set card as the default
  
 ### Create a new participant and create an identity and card for them
@@ -92,11 +92,11 @@ Reference links: https://hyperledger.github.io/composer/latest/integrating/enabl
 Using the REST Server UI:
 
  - execute POST/Developer to create a Developer participant
- - issue a new identity for the new Developer by running a curl command. This can't be done using the REST UI because the response needs to be captures to create the new card to import:
+ - issue a new identity for the new Developer by running a curl command. This can't be done using the REST UI because the response needs to be captured to create the new card to import:
 ```
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/octet-stream' --header 'X-Access-Token: <Access Token>' -d '{ "participant": "org.ibm.<namespace>.#NewDeveloper", "userID": "NewDevID", "options": {"card":"admin@<network name>"} }' 'http://<external kube cluster ip address>:3000/api/system/identities/issue' > NewDev.card
 ```
- - execute POST/wallet/import to import the NewDev.card card 
+ - execute POST/wallet/import to import the NewDev.card file
  
 Using the Composer CLI:
  ```
