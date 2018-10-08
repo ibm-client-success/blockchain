@@ -1,6 +1,6 @@
 # Multi User REST Server Hyperledger Composer Network
  
-## Running REST Server and Playground to run on IBM Cloud 
+## Setting up REST Server and Playground to run on IBM Cloud 
 
 Note: BNA has to be compiled against composer version 0.19.5.  This is because the REST Server image that runs on the IBM Cloud is at that level.
 
@@ -74,16 +74,7 @@ bx cf push our-playground --docker-image ibmblockchain/composer-playground:0.19.
 bx cf set-env our-playground NODE_CONFIG "$NODE_CONFIG"
 bx cf start our-playground
 
-## Setup Demo
 
-Invoke the **SetupDemo** transaction to prefill the blockchain
- 
-## Error checking
-  - within Angular App, "admin" id is assumed, so participant designated Access Control Rules are not applicable
-  - if using Composer Playground, *Administrator* can only update, delete *ProtectedAssets* that he owns
-  - When creating a *ProtectedAsset*, use the *CreateAsset* Transaction
-  - Valid URL must be entered for the *CreateAsset** and *UpdateAsset* transactions
-  - if using the Angular App, text must be entered for both description (blank is accepted) and URL for *UpdateAsset* transaction
   
 ## Running Kubernetes REST Server in Multi User Mode
 
@@ -117,7 +108,18 @@ composer identity issue -c admin@<network name> -f NewDev.card -u NewDev -a "res
 composer card import -f NewDev.card
 ```
 Execute POST/wallet/{name}/setDefault to change to new identity. ACL rules for *Developer* Participant associated with identity will be in place.
+
+## Setup Demo
+
+Invoke the **SetupDemo** transaction to prefill the blockchain
  
+## Error checking
+  - within Angular App, "admin" id is assumed, so participant designated Access Control Rules are not applicable
+  - if using Composer Playground, *Administrator* can only update, delete *ProtectedAssets* that he owns
+  - When creating a *ProtectedAsset*, use the *CreateAsset* Transaction
+  - Valid URL must be entered for the *CreateAsset** and *UpdateAsset* transactions
+  - if using the Angular App, text must be entered for both description (blank is accepted) and URL for *UpdateAsset* transaction
+  
 ## Future support
 
 When an asset is deleted, it needs to be removed from any *ORN*s that it is associated with.
