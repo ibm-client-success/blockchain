@@ -6,7 +6,7 @@ Note: BNA has to be compiled against composer version 0.19.5.  This is because t
 
 Compile your BNA at this level.
 
-Follow the directions in [Deploying a Business Network](https://console.bluemix.net/docs/services/blockchain/develop_starter.html#deploying-a-business-network) to install the .bna file on the IBM Blockchain Starter Plan Service, substituting <network name> for vehicle-manufacturing-network. Keep track of the admin@<network name>.card. It will be used later.
+Follow the directions in [Deploying a Business Network](https://console.bluemix.net/docs/services/blockchain/develop_starter.html#deploying-a-business-network) to install the .bna file on the IBM Blockchain Starter Plan Service, substituting `<network name>` for vehicle-manufacturing-network. Keep track of the `admin@<network name>.card`. It will be used later.
 
 ### Setup the Cloudant Database Wallet
 
@@ -70,12 +70,11 @@ Start the server
 bx cf start our-rest-server
 ```
 ### Deploy the Playground 
+```
 bx cf push our-playground --docker-image ibmblockchain/composer-playground:0.19.5 -i 1 -m 256M --no-start --random-route --no-manifest
 bx cf set-env our-playground NODE_CONFIG "$NODE_CONFIG"
 bx cf start our-playground
-
-
-  
+```  
 ## Running Kubernetes REST Server in Multi User Mode
 
 Reference links: https://hyperledger.github.io/composer/latest/integrating/enabling-rest-authentication, https://hyperledger.github.io/composer/latest/integrating/deploying-the-rest-server.html
@@ -85,7 +84,7 @@ Reference links: https://hyperledger.github.io/composer/latest/integrating/enabl
  - sign into github to authenticate
  - go to `<external kube cluster ip address>:3000/auth/github` to run as an authenticated user
  
-### Import admin@<network name> card
+### Import `admin@<network name>` card
 
  - execute POST/wallet/import using card provided. Make sure this card has System Admin privileges.
  - execute POST/wallet/{name}/setDefault to set card as the default
