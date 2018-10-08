@@ -1,6 +1,6 @@
 # Multi User REST Server Hyperledger Composer Network
  
-## Setting up REST Server and Playground to run on IBM Cloud 
+## Setting up Single Use REST Server and Playground to run on IBM Cloud 
 
 Note: BNA has to be compiled against composer version 0.19.5.  REST Server image that runs on the IBM Cloud requires that level.
 
