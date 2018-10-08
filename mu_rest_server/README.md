@@ -84,9 +84,9 @@ Reference links: https://hyperledger.github.io/composer/latest/integrating/enabl
  - sign into github to authenticate
  - go to `<external kube cluster ip address>:3000/auth/github` to run as an authenticated user
  
-### Import `admin@<network name>` card
+### Import cards
 
- - execute POST/wallet/import using card provided. Make sure this card has System Admin privileges.
+ - execute POST/wallet/import using card (`admin@<network name> or Developer@<network name>`) provided. Make sure this card has System Admin privileges.
  - execute POST/wallet/{name}/setDefault to set card as the default
  
 ### Create a new participant and create an identity and card for them
