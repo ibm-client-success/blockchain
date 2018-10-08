@@ -1,12 +1,12 @@
 # Multi User REST Server Hyperledger Composer Network
  
-## Setting up REST Server and Playground to run against IBM Blockchain Platform Starter Plan
+## Running REST Server and Playground to run on IBM Cloud 
 
 Note: BNA has to be compiled against composer version 0.19.5.  This is because the REST Server image that runs on the IBM Cloud is at that level.
 
 Compile your BNA at this level.
 
-Follow the directions in [Deploying a Business Network](https://console.bluemix.net/docs/services/blockchain/develop_starter.html#deploying-a-business-network) to install the .bna file on the IBM Service, substituting <network name> for vehicle-manufacturing-network. Keep track of the admin@<network name>.card. It will be used later.
+Follow the directions in [Deploying a Business Network](https://console.bluemix.net/docs/services/blockchain/develop_starter.html#deploying-a-business-network) to install the .bna file on the IBM Blockchain Starter Plan Service, substituting <network name> for vehicle-manufacturing-network. Keep track of the admin@<network name>.card. It will be used later.
 
 ### Setup the Cloudant Database Wallet
 
