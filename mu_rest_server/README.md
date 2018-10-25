@@ -2,8 +2,6 @@
  
 ## Setting up Single Use REST Server and Playground to run on IBM Cloud 
 
-Note: BNA has to be compiled against composer version 0.19.5.  REST Server image that runs on the IBM Cloud requires that level.
-
 Follow the directions in [Deploying a Business Network](https://console.bluemix.net/docs/services/blockchain/develop_starter.html#deploying-a-business-network) to install the .bna file on the IBM Blockchain Starter Plan Service, substituting `<network name>` for vehicle-manufacturing-network. Keep track of the `admin@<network name>.card`. It will be used later.
 
 ### Setup the Cloudant Database Wallet
@@ -17,7 +15,7 @@ Follow the directions in [Deploying a Business Network](https://console.bluemix.
 {
     "composer": {
         "wallet": {
-            "type": "@ampretia/composer-wallet-cloudant",
+            "type": "composer-wallet-cloudant",
             "options": {
 	        "host": "<hostname>",
                   "password": "*************************************************",
@@ -32,7 +30,7 @@ Follow the directions in [Deploying a Business Network](https://console.bluemix.
 ```
 Make sure the module that provides the support to connect from Composer to Cloudant is installed.
 ```
-npm install -g @ampretia/composer-wallet-cloudant@0.2.1
+npm install -g composer-wallet-cloudant@0.0.13
 ```
 Create the Cloudant database using the value in the JSON for the url field:
 ```
@@ -54,7 +52,7 @@ bx target -o "<org>" -s <space> -g <group>
 ```
 Push the REST server using the docker image:
 ```
-bx cf push our-rest-server --docker-image ibmblockchain/composer-rest-server:latest -i 1 -m 256M --no-start --no-manifest --random-route
+bx cf push our-rest-server --docker-image hyperledger/composer-rest-server:0.20.2 -i 1 -m 256M --no-start --no-manifest --random-route
 ```
 Set environment variable for the REST server:
 ```
@@ -69,13 +67,14 @@ bx cf start our-rest-server
 ```
 ### Deploy the Playground 
 ```
-bx cf push our-playground --docker-image ibmblockchain/composer-playground:0.19.5 -i 1 -m 256M --no-start --random-route --no-manifest
+bx cf push our-playground --docker-image hyperledger/composer-playground:0.20.2 -i 1 -m 256M --no-start --random-route --no-manifest
 bx cf set-env our-playground NODE_CONFIG "$NODE_CONFIG"
 bx cf start our-playground
 ```  
 ## Running Kubernetes REST Server in Multi User Mode
 
-Reference links: https://hyperledger.github.io/composer/latest/integrating/enabling-rest-authentication, https://hyperledger.github.io/composer/latest/integrating/deploying-the-rest-server.html
+Reference links: 
+https://hyperledger.github.io/composer/latest/integrating/enabling-rest-authentication, https://hyperledger.github.io/composer/latest/integrating/deploying-the-rest-server.html
 
 ### Authenticate
 
@@ -94,7 +93,7 @@ Using the REST Server UI:
  - execute POST/Developer to create a Developer participant
  - issue a new identity for the new Developer by running a curl command. This can't be done using the REST UI because the response needs to be captured to create the new card to import:
 ```
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/octet-stream' --header 'X-Access-Token: <Access Token>' -d '{ "participant": "org.ibm.<namespace>.#NewDeveloper", "userID": "NewDevID", "options": {"card":"admin@<network name>"} }' 'http://<external kube cluster ip address>:3000/api/system/identities/issue' > NewDev.card
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/octet-stream' --header 'X-Access-Token: <Access Token>' -d '{ "participant": "org.ibm.<namespace>.#Developer", "userID": "NewDevID", "options": {"card":"admin@<network name>"} }' 'http://<external kube cluster ip address>:3000/api/system/identities/issue' > NewDev.card
 ```
  - execute POST/wallet/import to import the NewDev.card file
  
