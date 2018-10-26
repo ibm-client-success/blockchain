@@ -107,12 +107,9 @@ Execute POST/wallet/{name}/setDefault to change to new identity. ACL rules for *
 
 ## Setup Demo
 
-Invoke the **SetupDemo** transaction to prefill the blockchain
+Invoke the **SetupDemo** transaction if available to prefill the business network
  
 ## Error checking
-  - within Angular App, "admin" id is assumed, so participant designated Access Control Rules are not applicable
-  - if using Composer Playground, *Administrator* can only update, delete *ProtectedAssets* that he owns
-  - When creating a *ProtectedAsset*, use the *CreateAsset* Transaction
-  - Valid URL must be entered for the *CreateAsset* and *UpdateAsset* transactions
-  - if using the Angular App, text must be entered for both description (blank is accepted) and URL for *UpdateAsset* transaction
+  - within Basic Angular App, "admin" id is assumed, so participant designated Access Control Rules are not applicable
+  - if using the Angular App, text must be entered for all updatable fields in the transaction
  
