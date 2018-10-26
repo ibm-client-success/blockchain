@@ -115,7 +115,4 @@ Invoke the **SetupDemo** transaction to prefill the blockchain
   - When creating a *ProtectedAsset*, use the *CreateAsset* Transaction
   - Valid URL must be entered for the *CreateAsset* and *UpdateAsset* transactions
   - if using the Angular App, text must be entered for both description (blank is accepted) and URL for *UpdateAsset* transaction
-
-## Known bugs
-Unable to create separate identities for Administrator and Developer on Composer v0.20.0 (HLF 1.2). https://github.com/hyperledger/composer/issues/4398
  
